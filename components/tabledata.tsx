@@ -11,6 +11,16 @@ const Employee = async () => {
 					<th className='py-3 px-6'>Actions</th>
 				</tr>
 			</thead>
+			<tbody>
+				<tr className='bg-white border-b'>
+					<td className='py-3 px-6'></td>
+					<td className='py-3 px-6'></td>
+					<td className='py-3 px-6'></td>
+					<td className='py-3 px-6'></td>
+					<td className='py-3 px-6'></td>
+					<td className='py-3 px-6'></td>
+				</tr>
+			</tbody>
 		</table>
 	)
 }
