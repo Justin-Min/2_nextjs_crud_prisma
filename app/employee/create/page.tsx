@@ -27,6 +27,7 @@ const CreateEmployeePage = () => {
 						/>
 						<div id='name-error' aria-live='polite' aria-atomic='true'>
 							<p className='mt-2 text-sm text-red-500'>{state?.Error?.name}</p>
+							<div></div>
 						</div>
 					</div>
 					<div className='mb-5'>
