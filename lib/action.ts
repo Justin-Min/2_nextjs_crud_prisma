@@ -55,6 +55,7 @@ export const getEmployeelist = async (query: string) => {
 		})
 		return employees
 	} catch (error) {
+		console.log(error)
 		throw new Error('Failed to fetch employees data')
 	}
 }
