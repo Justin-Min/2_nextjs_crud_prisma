@@ -13,7 +13,7 @@ export default function Home() {
 						Create
 					</Link>
 				</div>
-				<TableData />
+				<TableData query='' />
 			</div>
 		</div>
 	)

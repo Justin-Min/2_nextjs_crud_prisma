@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import { getEmployeelist } from '@/lib/action'
+import { formatDate } from '@/lib/utils'
 
-export default async function Employee({ query }: { query: string }) {
+const Employee = async ({ query }: { query: string }) => {
 	const employees = await getEmployeelist(query)
 
 	return (
@@ -22,11 +24,17 @@ export default async function Employee({ query }: { query: string }) {
 						<td className='py-3 px-6'>{rs.name}</td>
 						<td className='py-3 px-6'>{rs.email}</td>
 						<td className='py-3 px-6'>{rs.phone}</td>
-						<td className='py-3 px-6'>{rs.createAt}</td>
-						<td className='flex justify-center gap-1 py-3'>Edit | Delete</td>
+						<td className='py-3 px-6'>{formatDate(rs.createAt.toString())}</td>
+						<td className='flex justify-center gap-1 py-3'>
+							<Link href={`/employee/edit/${rs.id}`} className='btn btn-info'>
+								Edit
+							</Link>
+						</td>
 					</tr>
 				))}
 			</tbody>
 		</table>
 	)
 }
+
+export default Employee
