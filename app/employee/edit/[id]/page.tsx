@@ -3,7 +3,7 @@ const UpdateEmployeePage = async ({ params }: { params: { id: string } }) => {
 	console.log(id)
 	return (
 		<div className='max-w-md mx-auth mt-5'>
-			<h1 className='text-2xl text-center mb-2'>Update Employee</h1>
+			<h1 className='text-2xl text-center mb-2 text-base'>Update Employee</h1>
 		</div>
 	)
 }
