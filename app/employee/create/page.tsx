@@ -53,7 +53,7 @@ const CreateEmployeePage = () => {
 							htmlFor='phone'
 							className='block text-sm font-medium text-gray-900'
 						>
-							Phone Number
+							Phone Number(p)
 						</label>
 						<input
 							type='text'
