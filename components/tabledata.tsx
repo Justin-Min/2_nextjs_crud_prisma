@@ -1,4 +1,4 @@
-const Employee = async () => {
+export default async function Employee() {
 	return (
 		<table className='table table-zebra'>
 			<thead className='text-sm text-gray-700 uppercase bg-gray-50'>
@@ -13,16 +13,14 @@ const Employee = async () => {
 			</thead>
 			<tbody>
 				<tr className='bg-white border-b'>
-					<td className='py-3 px-6'></td>
-					<td className='py-3 px-6'></td>
-					<td className='py-3 px-6'></td>
-					<td className='py-3 px-6'></td>
-					<td className='py-3 px-6'></td>
-					<td className='py-3 px-6'></td>
+					<td className='py-3 px-6'>1</td>
+					<td className='py-3 px-6'>Justin Min</td>
+					<td className='py-3 px-6'>justinmin@naver.com</td>
+					<td className='py-3 px-6'>123456</td>
+					<td className='py-3 px-6'>July 11</td>
+					<td className='flex justify-center gap-1 py-3'>Edit | Delete</td>
 				</tr>
 			</tbody>
 		</table>
 	)
 }
-
-export default Employee
