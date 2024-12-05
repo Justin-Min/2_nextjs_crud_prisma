@@ -1,6 +1,7 @@
 'use server'
 
 import { z } from 'zod'
+import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
@@ -22,7 +23,13 @@ export const saveEmployee = async (prevState: any, formData: FormData) => {
 	}
 
 	try {
-		console.log('Success')
+		await prisma.employee.create({
+			data: {
+				name: validatedFields.data.name,
+				email: validatedFields.data.email,
+				phone: validatedFields.data.phone,
+			},
+		})
 	} catch (error) {
 		console.log(error)
 		return { message: 'Failed to create new employee' }
@@ -30,4 +37,24 @@ export const saveEmployee = async (prevState: any, formData: FormData) => {
 
 	revalidatePath('/employee')
 	redirect('/employee')
+}
+
+export const getEmployeelist = async (query: string) => {
+	try {
+		const employees = await prisma.employee.findMany({
+			select: {
+				id: true,
+				name: true,
+				email: true,
+				phone: true,
+				createAt: true,
+			},
+			orderBy: {
+				createAt: 'desc',
+			},
+		})
+		return employees
+	} catch (error) {
+		throw new Error('Failed to fetch employees data')
+	}
 }
