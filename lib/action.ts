@@ -24,6 +24,7 @@ export const saveEmployee = async (prevState: any, formData: FormData) => {
 	try {
 		console.log('Success')
 	} catch (error) {
+		console.log(error)
 		return { message: 'Failed to create new employee' }
 	}
 
