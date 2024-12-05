@@ -1,4 +1,4 @@
-const Employee = async () => {
+export default async function Employee() {
 	return (
 		<table className='table table-zebra'>
 			<thead className='text-sm text-gray-700 uppercase bg-gray-50'>
@@ -24,5 +24,3 @@ const Employee = async () => {
 		</table>
 	)
 }
-
-export default Employee
