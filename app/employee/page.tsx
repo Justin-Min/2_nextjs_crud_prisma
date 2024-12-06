@@ -2,6 +2,7 @@ import Link from 'next/link'
 import TableData from '@/components/tabledata'
 import { Suspense } from 'react'
 import { Spinner } from '@/components/spinner'
+import Search from '@/components/search'
 
 export default function Home() {
 	return (
@@ -15,6 +16,7 @@ export default function Home() {
 						Create
 					</Link>
 				</div>
+				<Search />
 				<Suspense fallback={<Spinner />}>
 					<TableData query='' />
 				</Suspense>
