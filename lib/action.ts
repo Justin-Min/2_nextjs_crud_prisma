@@ -31,6 +31,7 @@ export const saveEmployee = async (prevState: any, formData: FormData) => {
 			},
 		})
 	} catch (error) {
+		console.log('입력 실패')
 		console.log(error)
 		return { message: 'Failed to create new employee' }
 	}
@@ -55,7 +56,61 @@ export const getEmployeelist = async (query: string) => {
 		})
 		return employees
 	} catch (error) {
-		console.log(error)
 		throw new Error('Failed to fetch employees data')
 	}
+}
+
+export const getEmployeeById = async (id: string) => {
+	try {
+		const employee = await prisma.employee.findUnique({
+			where: { id },
+		})
+		return employee
+	} catch (error) {
+		throw new Error('Failed to fetch contact data')
+	}
+}
+
+export const updateEmployee = async (
+	id: string,
+	prevState: any,
+	formData: FormData
+) => {
+	const validatedFields = EmployeeSchema.safeParse(
+		Object.fromEntries(formData.entries())
+	)
+
+	if (!validatedFields.success) {
+		return {
+			Error: validatedFields.error.flatten().fieldErrors,
+		}
+	}
+
+	try {
+		await prisma.employee.update({
+			data: {
+				name: validatedFields.data.name,
+				email: validatedFields.data.email,
+				phone: validatedFields.data.phone,
+			},
+			where: { id },
+		})
+	} catch (error) {
+		return { message: 'Failed to update employee' }
+	}
+
+	revalidatePath('/employee')
+	redirect('/employee')
+}
+
+export const deleteEmployee = async (id: string) => {
+	try {
+		await prisma.employee.delete({
+			where: { id },
+		})
+	} catch (error) {
+		return { message: 'Failed to delete employee' }
+	}
+
+	revalidatePath('/employee')
 }

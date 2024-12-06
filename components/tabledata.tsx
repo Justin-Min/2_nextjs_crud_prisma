@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getEmployeelist } from '@/lib/action'
 import { formatDate } from '@/lib/utils'
+import { DeleteButton } from '@/components/delete'
 
 const Employee = async ({ query }: { query: string }) => {
 	const employees = await getEmployeelist(query)
@@ -29,6 +30,7 @@ const Employee = async ({ query }: { query: string }) => {
 							<Link href={`/employee/edit/${rs.id}`} className='btn btn-info'>
 								Edit
 							</Link>
+							<DeleteButton id={rs.id} />
 						</td>
 					</tr>
 				))}

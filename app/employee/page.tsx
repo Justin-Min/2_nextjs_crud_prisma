@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import TableData from '@/components/tabledata'
+import { Suspense } from 'react'
+import { Spinner } from '@/components/spinner'
 
 export default function Home() {
 	return (
@@ -13,7 +15,9 @@ export default function Home() {
 						Create
 					</Link>
 				</div>
-				<TableData query='' />
+				<Suspense fallback={<Spinner />}>
+					<TableData query='' />
+				</Suspense>
 			</div>
 		</div>
 	)
