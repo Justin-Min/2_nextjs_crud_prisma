@@ -72,9 +72,15 @@ export const getData = async (query: string) => {
 		// 		createdAt: 'desc',
 		// 	},
 		// })
+		console.log(query)
 		const employees = await prisma.employee.findMany({
 			where: {
-				email: 'user@nextmail.com',
+				name: {
+					contains: query,
+				},
+			},
+			orderBy: {
+				createAt: 'desc',
 			},
 		})
 		return employees
