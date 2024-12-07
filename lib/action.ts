@@ -60,6 +60,29 @@ export const getEmployeelist = async (query: string) => {
 	}
 }
 
+export const getData = async (query: string) => {
+	try {
+		// const employees = await prisma.employee.findMany({
+		// 	where: {
+		// 		conntains: {
+		// 			startsWith: query,
+		// 		},
+		// 	},
+		// 	orderBy: {
+		// 		createdAt: 'desc',
+		// 	},
+		// })
+		const employees = await prisma.employee.findMany({
+			where: {
+				email: 'user@nextmail.com',
+			},
+		})
+		return employees
+	} catch (error) {
+		throw new Error('Failed to fetch employees data: getData')
+	}
+}
+
 export const getEmployeeById = async (id: string) => {
 	try {
 		const employee = await prisma.employee.findUnique({

@@ -4,7 +4,13 @@ import { Suspense } from 'react'
 import { Spinner } from '@/components/spinner'
 import Search from '@/components/search'
 
-export default function Home() {
+export default async function Home({
+	searchParams,
+}: {
+	searchParams?: { query?: string }
+}) {
+	const query = searchParams?.query || ''
+
 	return (
 		<div className='w-screen py-20 flex justify-center flex-col items-center'>
 			<div className='flex items-center justify-between gap-1 mb-5'>
@@ -17,8 +23,8 @@ export default function Home() {
 					</Link>
 				</div>
 				<Search />
-				<Suspense fallback={<Spinner />}>
-					<TableData query='' />
+				<Suspense key={query} fallback={<Spinner />}>
+					<TableData query={query} />
 				</Suspense>
 			</div>
 		</div>

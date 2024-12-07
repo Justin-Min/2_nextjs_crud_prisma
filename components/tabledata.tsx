@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import { getEmployeelist } from '@/lib/action'
+import { getData } from '@/lib/action'
 import { formatDate } from '@/lib/utils'
 import { DeleteButton } from '@/components/delete'
 
 const Employee = async ({ query }: { query: string }) => {
-	const employees = await getEmployeelist(query)
+	// const employees = await getEmployeelist(query)
+	const employees = await getData(query)
 
 	return (
 		<table className='table table-zebra'>
